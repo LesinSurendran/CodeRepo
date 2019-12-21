@@ -18,6 +18,13 @@ import com.myretail.model.Product;
 import com.myretail.model.ProductResponse;
 import com.myretail.repository.ProductRepositoryTest;
 
+/**
+ * Junit test class used to validate the service layer of the my retail
+ * application
+ * 
+ * @author lesin
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProductServiceTest {
@@ -28,10 +35,14 @@ public class ProductServiceTest {
 	@MockBean
 	private ProductRepositoryTest productRepository;
 
+	/**
+	 * This method is used to test the find product valid scenario
+	 * 
+	 * @throws ProductServiceException
+	 */
 	@Test
 	public void testFindByValidId() throws ProductServiceException {
 
-//		productService = new ProductServiceImpl();
 		Integer id = 78842191;
 		// Validate ProductResponse
 		ProductResponse productResponse = productService.findProductById(id);
@@ -56,27 +67,38 @@ public class ProductServiceTest {
 		assertEquals(120.49, price.getValue());
 
 	}
-	
+
+	/**
+	 * This method is used to test the find product invalid scenario
+	 * 
+	 * @throws ProductServiceException
+	 */
 	@Test
 	public void testFindByInValidId() throws ProductServiceException {
-//		productService = new ProductServiceImpl();
 		// Validate ProductResponse
 		assertThrows(ProductServiceException.class, () -> productService.findProductById(8585858));
 
 	}
 
+	/**
+	 * This method is used to test the update price invalid scenario
+	 * 
+	 * @throws ProductServiceException
+	 */
 	@Test
 	public void updatePriceWithInValidItem() throws ProductServiceException {
-//		productService = new ProductServiceImpl();
 		Offer offerTest = new Offer(12312, 10.00, "USD");
 		assertThrows(ProductServiceException.class, () -> productService.updatePrice(offerTest));
 
 	}
-	
 
+	/**
+	 * This method is used to test the update price valid scenario
+	 * 
+	 * @throws ProductServiceException
+	 */
 	@Test
 	public void updatePriceWithValidItem() throws ProductServiceException {
-//		productService = new ProductServiceImpl();
 		Offer offerTest = new Offer(53184864, 10.00, "USD");
 
 		ProductResponse productResponse = productService.updatePrice(offerTest);

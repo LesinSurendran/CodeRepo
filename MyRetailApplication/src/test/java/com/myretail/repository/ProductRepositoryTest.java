@@ -16,7 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.myretail.model.Offer;
 
 /**
- * Product Repository test Class
+ * Junit test class used to validate the repository layer of the my retail
+ * application
  * 
  * @author lesin
  *
@@ -27,8 +28,10 @@ public class ProductRepositoryTest {
 
 	@Autowired
 	private ProductRepository productRepository;
-	
 
+	/**
+	 * This method is used to test all offer retrieval
+	 */
 	@Test
 	public void findAllOffers() {
 		List<Offer> offerList = productRepository.findAll();
@@ -36,6 +39,9 @@ public class ProductRepositoryTest {
 		assertTrue(!offerList.isEmpty());
 	}
 
+	/**
+	 * This method is used to test find offer by id
+	 */
 	@Test
 	public void testFindByOfferId() {
 		// given
@@ -52,6 +58,9 @@ public class ProductRepositoryTest {
 
 	}
 
+	/**
+	 * This method is used to test updating an offer record
+	 */
 	@Test
 	public void testUpdateOffer() {
 		// given
